@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 100 18% 97%;
+    --background-secondary: 120 26% 95%;
+    --foreground: 120 30% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 120 30% 14%;
+    --card-hover: 100 18% 97%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 120 30% 14%;
+
+    --primary: 142 46% 33%;
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 142 49% 24%;
+    --primary-light: 142 69% 58%;
+
+    --secondary: 120 26% 95%;
+    --secondary-foreground: 120 30% 14%;
+
+    --muted: 120 10% 90%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent-orange: 25 95% 53%;
+    --accent-orange-foreground: 0 0% 100%;
+    --accent-yellow: 45 97% 65%;
+
+    --emergency: 0 84% 60%;
+    --emergency-foreground: 0 0% 100%;
+
+    --accent: 120 26% 95%;
+    --accent-foreground: 120 30% 14%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 138 30% 90%;
+    --input: 138 30% 90%;
+    --ring: 142 46% 33%;
+
+    --radius: 1.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito', sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-caveat {
+    font-family: 'Caveat', cursive;
+  }
+  .font-nunito {
+    font-family: 'Nunito', sans-serif;
+  }
+  .font-jakarta {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@layer components {
+  .paw-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M20 18c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm-5-4c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm10 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm-5 10c-2.2 0-4-1.8-4-4h8c0 2.2-1.8 4-4 4z' fill='%232D7D46' fill-opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .vetcare-card {
+    @apply bg-card rounded-[24px] transition-all duration-300;
+    box-shadow: 0 4px 20px rgba(45,125,70,0.10);
+  }
+  .vetcare-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(45,125,70,0.18);
+    border-top: 3px solid hsl(var(--primary));
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.15); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.15); }
+  70% { transform: scale(1); }
+}
+@keyframes paw-wag {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(12deg); }
+  75% { transform: rotate(-12deg); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes pulse-border {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(239,68,68,0); }
+}
+@keyframes counter-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-heartbeat { animation: heartbeat 1.5s ease-in-out infinite; }
+.animate-paw-wag { animation: paw-wag 0.6s ease-in-out; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-pulse-border { animation: pulse-border 2s ease-in-out infinite; }
