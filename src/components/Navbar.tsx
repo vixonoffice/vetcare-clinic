@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useI18n, useTr } from '@/lib/i18n';
 import { Menu, X, Phone } from 'lucide-react';
@@ -16,6 +16,17 @@ const Navbar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
+  // Body scroll lock when menu open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
+  // Close menu on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
   const links = [
     { to: '/', label: tr(t.nav.home) },
     { to: '/servicii', label: tr(t.nav.services) },
@@ -27,7 +38,11 @@ const Navbar: React.FC = () => {
     <nav className="sticky top-0 z-50 bg-card border-b-2 border-primary/10" style={{ boxShadow: '0 2px 12px rgba(45,125,70,0.06)' }}>
       <div className="container mx-auto max-w-[1280px] px-4 flex items-center justify-between h-16">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
+        <Link
+          to="/"
+          className="flex items-center gap-2 group"
+          onClick={() => { if (location.pathname === '/') window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+        >
           <PawIcon />
           <span className="font-nunito font-extrabold text-2xl text-primary">VetCare</span>
         </Link>
