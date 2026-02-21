@@ -55,6 +55,12 @@ const Footer: React.FC = () => {
 
         <div className="mt-8 pt-6 border-t border-primary-foreground/10 text-center text-xs opacity-50">
           {tr(t.footer.copyright)}
+          <p className="mt-1">
+            Site realizat de{' '}
+            <a href="https://vixonlab.ro" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity underline underline-offset-2">
+              Vixon Lab
+            </a>
+          </p>
         </div>
       </div>
     </footer>
