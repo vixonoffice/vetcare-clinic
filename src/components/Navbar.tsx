@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
         <Link
           to="/"
           className="flex items-center gap-2 group"
-          onClick={() => { if (location.pathname === '/') window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          onClick={() => { setMobileOpen(false); if (location.pathname === '/') window.scrollTo({ top: 0, behavior: 'instant' }); }}
         >
           <PawIcon />
           <span className="font-nunito font-extrabold text-2xl text-primary">VetCare</span>
